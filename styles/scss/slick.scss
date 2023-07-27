@@ -1,0 +1,17 @@
+.slick-track {
+	float: left !important;
+}
+
+// slider-spacing
+.slider-spacing-sm .slick-slide > div {
+	margin: 0 .8rem !important;
+}
+
+.slider-spacing-sm .slick-list {
+	margin: 0 -.8rem !important;
+}
+
+// arrows
+.hidden-arrows .slick-arrow {
+    display: none !important;
+}

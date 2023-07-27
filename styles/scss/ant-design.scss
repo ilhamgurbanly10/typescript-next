@@ -1,0 +1,20 @@
+// tooltip
+.tooltip-style .ant-tooltip-inner {
+    background-color: $yellow;
+    color: $black; 
+    padding: 3px 10px 5px;
+    font-size: 14px; 
+}
+
+.tooltip-style .ant-tooltip-arrow::before {
+    background: $yellow;
+}
+
+.tooltip-bg-red .ant-tooltip-inner {
+    background-color: $red;
+    color: $white;
+}
+
+.tooltip-bg-red .ant-tooltip-arrow::before {
+    background: $red !important;
+}

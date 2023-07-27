@@ -1,0 +1,22 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import './scss/colors.scss';
+@import './scss/sizes.scss';
+@import './scss/variables.scss';
+@import './scss/keyframes.scss';
+@import './scss/mixins.scss';
+@import './scss/ant-design.scss';
+@import './scss/slick.scss';
+@import './scss/sliders.scss';
+@import './scss/animations.scss';
+@import './scss/main.scss';
+@import './scss/images.scss';
+@import './scss/buttons.scss';
+@import './scss/containers.scss';
+
+* {
+    -webkit-tap-highlight-color: transparent; 
+    tap-highlight-color: transparent;
+}

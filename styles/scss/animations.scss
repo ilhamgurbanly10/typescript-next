@@ -1,0 +1,27 @@
+// btn-grow-on-hover
+.btn-grow-on-hover {
+    transition: $time all;
+    display: inline-block;
+}
+
+@media (hover: hover) {
+
+    .btn-grow-on-hover:hover {
+        transform: scale($scaleSm) !important;
+        -webkit-transform: scale($scaleSm) !important;
+    }
+
+}
+
+.btn-grow-on-hover:active {
+    transform: scale($scaleSm) !important;
+    -webkit-transform: scale($scaleSm) !important;
+}
+
+
+// text-running
+.text-running {
+    white-space: nowrap;
+    width: 100%;
+    animation: runningAnimation 10s linear infinite;
+}

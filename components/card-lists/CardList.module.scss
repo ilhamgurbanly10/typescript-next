@@ -1,0 +1,31 @@
+@import '../../styles/scss/colors.scss';
+@import '../../styles/scss/mixins.scss';
+
+.list {
+    @include flex();
+}
+
+.card {
+    width: calc(50% - .8rem);
+    margin-top: 1.6rem;
+}
+
+.card:nth-child(odd) {
+    margin-right: 1.6rem;
+}
+
+@media (min-width: 1024px) {
+
+    .card {
+        width: calc(25% - (4.8rem / 4));
+    }
+
+    .card {
+        margin-right: 1.6rem;
+    }
+
+    .card:nth-child(4n) {
+        margin-right: 0;
+    }
+
+}

@@ -1,0 +1,10 @@
+@import '../../styles/scss/colors.scss';
+@import '../../styles/scss/mixins.scss';
+
+.list {
+    @include flex();
+}
+
+.sliderBox {
+    margin-top: 1.6rem;
+}

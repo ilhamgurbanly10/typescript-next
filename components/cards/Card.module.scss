@@ -1,0 +1,41 @@
+@import '../../styles/scss/colors.scss';
+
+.card {
+    width: 100%
+}
+
+
+.box {
+    padding: 1rem;
+    background-color: $white;
+}
+
+.title {
+    margin: 0;
+}
+
+.time {
+    color: black;
+}
+
+.additionals {
+    line-height: 20px;
+}
+
+.innerBoxTop,
+.innerBoxBottom {
+    position: absolute;
+    width: calc(100% - 20px);
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.innerBoxBottom {
+    top: initial;
+    bottom: 10px;
+}
+

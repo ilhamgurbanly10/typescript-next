@@ -9,16 +9,38 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/recoil": "^0.0.9",
+    "@types/styled-components": "^5.1.26",
+    "antd": "^5.7.2",
+    "autoprefixer": "^10.4.14",
+    "axios": "^1.4.0",
+    "i18next": "^23.2.11",
     "next": "13.4.11",
+    "next-i18next": "^14.0.0",
+    "postcss-flexbugs-fixes": "^5.0.2",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-i18next": "^13.0.2",
+    "react-responsive": "^9.0.2",
+    "react-slick": "^0.29.0",
+    "recoil": "^0.7.7",
+    "sass": "^1.64.1",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^6.0.5",
+    "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/node": "20.4.2",
-    "@types/react": "18.2.15",
-    "@types/react-dom": "18.2.7",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@types/react-i18next": "^8.1.0",
+    "@types/react-slick": "^0.23.10",
+    "dotenv": "^16.3.1",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.11",
+    "postcss": "^8.4.27",
+    "postcss-preset-env": "^9.1.0",
     "typescript": "5.1.6"
   }
 }

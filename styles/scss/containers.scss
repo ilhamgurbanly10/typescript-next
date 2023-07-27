@@ -1,0 +1,24 @@
+// main-container
+.main-container {
+    width: 100%;
+    padding: 0 1.2rem;
+}
+
+@media (min-width: 640px) {
+
+    .main-container {
+        padding: 0 1.6rem;
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+    .main-container {
+        max-width: $mainContainer;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 2rem;
+    }
+
+}

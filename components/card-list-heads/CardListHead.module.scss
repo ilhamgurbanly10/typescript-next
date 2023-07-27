@@ -1,0 +1,15 @@
+@import '../../styles/scss/colors.scss';
+
+.head {
+    background-color: $white !important;
+    padding: 1rem 1.5rem;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.link {
+    color: $green;
+}
