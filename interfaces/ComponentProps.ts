@@ -5,6 +5,7 @@ export interface CardList {
     title: string;
     link: string;
     className?: string;
+    loading?: boolean;
 };
 
 export interface SliderCardList {
@@ -12,6 +13,7 @@ export interface SliderCardList {
     title: string;
     link: string;
     className?: string;
+    loading?: boolean;
 };
 
 export interface CardListHead {

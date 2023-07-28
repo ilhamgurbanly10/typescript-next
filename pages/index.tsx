@@ -33,6 +33,7 @@ const Home: NextPage<Home> = ({ lastPosts, postsPerCategory }) => {
           title={"SON ELANLAR"} 
           link="/more-ads" 
           className="mt-10 lg:mt-20" 
+          loading={false}
         />
 
         {postsPerCategory?.map((post, i) => (
@@ -42,10 +43,10 @@ const Home: NextPage<Home> = ({ lastPosts, postsPerCategory }) => {
             title={post?.title} 
             link="/more-ads" 
             className="mt-10 lg:mt-20" 
+            loading={false}
           />
         ))}
         
-          
       </div>
 
     </>

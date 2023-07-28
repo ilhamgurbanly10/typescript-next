@@ -18,3 +18,8 @@
 .tooltip-bg-red .ant-tooltip-arrow::before {
     background: $red !important;
 }
+
+// spin
+.ant-spin-green-dot .ant-spin-dot-item {
+    background-color: $green !important;
+}

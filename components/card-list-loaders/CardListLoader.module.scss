@@ -1,0 +1,21 @@
+@import '../../styles/scss/colors.scss';
+
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: $white;
+    padding: 1rem;
+    height: 150px;
+}
+
+@media (min-width: 1024px) {
+
+    .container {
+        height: 250px;
+    }
+
+}
+
