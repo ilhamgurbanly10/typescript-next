@@ -36,3 +36,9 @@
 .progress.hidden {
   display: none;
 }
+
+// dark-mode
+
+.darkMode .progress {
+  background-color: $darkGrey;
+}

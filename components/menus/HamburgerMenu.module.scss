@@ -1,16 +1,34 @@
 @import '../../styles/scss/colors.scss';
 @import '../../styles/scss/variables.scss';
 
-.top {
-    background-color: $darkBlue;
-}
+.container {}
 
-.bottom {
-    background-color: $lightBlue;
-}
+.container.show {}
 
-.logo {
+.toggler {
+    font-size: 30px;
     color: $white;
+}
+
+.menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    background-color: $lightBlue;
+    transition: all $timeSm;
+    opacity: 0;
+    z-index: $maxLayer;
+    padding: 1rem 2rem;
+}
+
+.show .menu {
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    opacity: 1;
 }
 
 .phone,
@@ -18,6 +36,8 @@
     color: $white;
     font-size: 14px;
     display: inline-block;
+    line-height: 45px;
+    height: 45px;
 }
 
 .phone:not(:first-child) {
@@ -37,8 +57,7 @@
 }
 
 .link {
-    margin-left: .8rem;
-    line-height: 14px;
+    
     display: flex;
     align-items: center;
     align-content: center;
@@ -46,21 +65,28 @@
     > span:last-child {
         margin-left: .5rem;
     }
+
 }
+
 
 .navLink {
     display: inline-block;
     height: 45px;
     line-height: 45px;
-    padding: 0 1rem;
+    padding: 0;
     transition: background-color $time;
     color: $white;
     font-size: 15px;
     background-color: $lightBlue;
+    width: 100%;
 
     &:hover,
     &.active {
         background-color: $darkBlue !important;
+    }
+
+    &.active {
+        text-indent: 1rem;
     }
 
 }
@@ -74,6 +100,7 @@
     line-height: 45px;
     padding: 0 1rem;
     align-items: center;
+    width: 100%;
 
     .plusRound {
         width: 30px;
@@ -103,28 +130,23 @@
 
 }
 
-
 // dark-mode
 
 .darkMode {
 
-    .top {
-        background-color: $darkGrey;
-    }
-
-    .bottom {
+    .menu {
         background-color: $darkGrey2;
     }
 
     .navLink {
 
         background-color: $darkGrey2;
-    
+
         &:hover,
         &.active {
             background-color: $darkGrey !important;
         }
-    
+
     }
 
     .plus {

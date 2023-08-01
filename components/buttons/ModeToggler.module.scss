@@ -1,0 +1,56 @@
+@import '../../styles/scss/colors.scss';
+@import '../../styles/scss/variables.scss';
+
+.container {
+    display: flex;
+    align-items: center;
+    height: 45px;
+    line-height: 45px;
+    background-color: $darkBlue;
+    color: $white;
+    padding: 0 1rem;
+}
+
+.btn {
+    padding: 0 .5rem;
+    transition: all $time;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: $white;
+        color: $darkBlue;
+    }
+}
+
+.container:not(.darkMode) .lightBtn {
+    background-color: $white;
+    color: $darkBlue;
+    margin-right: .5rem;
+}
+
+
+
+// dark-mode
+
+.darkMode {
+
+    background-color: $darkGrey;
+
+    .btn {
+
+        &:hover {
+            background-color: $white;
+            color: $darkGrey;
+        }
+
+    }
+
+    .darkBtn {
+        background-color: $white !important;
+        color: $darkGrey;
+        margin-left: .5rem;
+    }
+
+}

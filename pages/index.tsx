@@ -8,14 +8,11 @@ import SliderCardList from '../components/card-lists/SliderCardList'
 import { useTranslation } from 'react-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PageHead from '../components/heads/PageHead';
-import React, {useEffect} from "react";
+import React from "react";
 
 const Home: NextPage<Home> = ({ lastPosts, postsPerCategory }) => {
 
   const { t } = useTranslation();
-
-  useEffect(() => {
-  }, [])
 
   return (
     <>
@@ -45,7 +42,7 @@ const Home: NextPage<Home> = ({ lastPosts, postsPerCategory }) => {
             className="mt-10 lg:mt-20" 
             loading={false}
           />
-        ))}
+        ))} 
         
       </div>
 

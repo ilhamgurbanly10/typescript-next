@@ -2,7 +2,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
 import React, {useState, memo } from "react"
 
-const Loader: React.FC<{loading: boolean, color?: string}> = ({loading, color = "rgb(6, 199, 42)"}) => {
+const Loader: React.FC<{loading: boolean, color?: string}> = ({loading, color = "rgb(59 130 246)"}) => {
 
     const antIcon = (
         <LoadingOutlined

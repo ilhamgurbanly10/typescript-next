@@ -1,0 +1,119 @@
+@import './Variables.module.scss';
+@import './Extends.module.scss';
+
+.container {
+    
+    position: relative;
+    width: 200px;
+
+    &.fullWidth {
+        width: 100%;
+    }
+
+    .toggler {
+        padding: .5rem 1rem;
+        color: $black;
+        background-color: $white;
+        border: 1px solid $white;
+        cursor: pointer;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        align-content: center;
+    }
+
+    .box {
+        height: 30px;
+        @extend .one-line-text;
+    }
+    
+    .placeholder {
+        color: $lightGrey !important;
+        font-size: 14px;
+        @extend .one-line-text;
+    }
+
+    .dropdown {
+        opacity: 0;
+        visibility: hidden;
+        transition: all $time;
+        background-color: $white;
+        padding: .5rem 1rem;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 100%;
+        overflow: auto;
+        max-height: 200px;
+        @extend .scroll;
+
+        .item {
+            cursor: pointer;
+            width: 100%;
+            padding: .5rem 0;
+            font-size: 14px;
+            @extend .one-line-text;
+
+            &.active {
+                font-weight: bold;
+            }
+            &.disabled {
+                cursor: not-allowed;
+                color: $lightGrey;
+            }
+        }
+
+    }
+
+    &.open {
+
+        .dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+
+    }
+
+    .clear,
+    .clearSearch,
+    .showSearch {
+        position: absolute;
+        font-size: 12px;
+        background-color: $lightGrey2;
+        border-radius: 100%;
+        right: 1rem;
+        width: 20px;
+        height: 20px;
+        @extend .center;
+    }
+
+    .clearSearch,
+    .showSearch {
+        background-color: transparent !important;
+    }
+
+    .clear {
+        &.clearOffset {
+            right: 2.7rem !important;
+        }
+    }
+
+    .input {
+        background-color: $white;
+        border: 0;
+        font-size: 14px;
+        width: 100%;
+        padding: 5px 0;
+        height: 30px;
+        line-height: 20px;
+        outline: 0 !important;
+    }
+
+    .notFound {
+        text-align: center;
+        padding: 1rem;
+        font-size: 14px;
+        color: $lightGrey;
+    }
+
+}

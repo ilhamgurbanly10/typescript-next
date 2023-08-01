@@ -1,11 +1,12 @@
 import Image from 'next/image';
-import React, {useState, memo } from "react"
+import React, {useState, memo, useMemo } from "react"
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
 import { NextImage } from '../../interfaces/Images'
 import styles from './NextImage.module.scss'
 import Loader from '../loaders/Loader';
-
+import useDarkMode from '../../hooks/useDarkMode';
+import { ModeClasses } from "../../interfaces/Mode";
 
 
 const NextImage: React.FC<NextImage> = ({alt = "", src = "/", quality = 75, sizeClassName = "", sizes = 'sizes="100vw"' }) => {
@@ -13,8 +14,15 @@ const NextImage: React.FC<NextImage> = ({alt = "", src = "/", quality = 75, size
     const [imgLoading, setImgLoading] = useState<boolean>(true);
     const [imgError, setImgError] = useState<boolean>(false);
 
+    const { mode } = useDarkMode();
+
+    const modeClasses = useMemo<ModeClasses>(() => { return {
+        'light': null,
+        'dark': styles.darkMode
+    }}, [])
+
     return (
-            <div className={`${styles.container} relative ${sizeClassName ? sizeClassName : styles.size}`}>
+            <div className={`${styles.container} ${modeClasses[mode]} relative ${sizeClassName ? sizeClassName : styles.size}`}>
                 
                 <Image
                     src={src}

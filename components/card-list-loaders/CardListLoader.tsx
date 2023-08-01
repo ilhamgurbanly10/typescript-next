@@ -1,4 +1,4 @@
-import React from "react"
+import React, {memo} from "react"
 import styles from "./CardListLoader.module.scss"
 import { Spin } from 'antd';
 
@@ -12,4 +12,4 @@ const CardListLoader: React.FC = () => {
 
 }
 
-export default CardListLoader;
+export default memo(CardListLoader);

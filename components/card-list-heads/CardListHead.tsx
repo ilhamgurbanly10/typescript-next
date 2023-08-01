@@ -5,8 +5,17 @@ import styles from './CardListHead.module.scss';
 import Link from 'next/link';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import {prev, next} from '../../pages/api/functions'
+import useDarkMode from '../../hooks/useDarkMode';
+import { ModeClasses } from "../../interfaces/Mode";
 
 const CardListHead: React.FC<CardListHead> = ({title = "", link = "", arrows = false}) => {
+
+    const { mode } = useDarkMode();
+
+    const modeClasses = useMemo<ModeClasses>(() => { return {
+        'light': null,
+        'dark': styles.darkMode
+    }}, [])
 
     const linkContent = useMemo<JSX>(() => { return {
         'false': null,
@@ -28,7 +37,7 @@ const CardListHead: React.FC<CardListHead> = ({title = "", link = "", arrows = f
     const container: React.RefObject<HTMLDivElement> = useRef(null);
 
     return (
-        <div ref={container} className={`${styles.head} flex flex-col lg:flex-row justify-between items-center`}>
+        <div ref={container} className={`${styles.head} ${modeClasses[mode]} flex flex-col lg:flex-row justify-between items-center`}>
             <h2 className={`${styles.title} mb-3 lg:mb-0`}>{title}</h2>
 
             <div>

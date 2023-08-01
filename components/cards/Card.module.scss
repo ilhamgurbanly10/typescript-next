@@ -4,7 +4,6 @@
     width: 100%
 }
 
-
 .box {
     padding: 1rem;
     background-color: $white;
@@ -15,7 +14,7 @@
 }
 
 .time {
-    color: black;
+    color: $black;
 }
 
 .additionals {
@@ -37,5 +36,17 @@
 .innerBoxBottom {
     top: initial;
     bottom: 10px;
+}
+
+// dark-mode
+
+.darkMode .box {
+    background-color: $darkGrey;
+}
+
+.darkMode .title,
+.darkMode .time,
+.darkMode .additionals {
+    color: $white;
 }
 

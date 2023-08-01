@@ -11,5 +11,14 @@
 }
 
 .link {
-    color: $green;
+    color: $darkBlue;
+}
+
+// dark-mode
+.darkMode {
+    background-color: $darkGrey !important;
+}
+
+.darkMode .title {
+    color: $white;
 }

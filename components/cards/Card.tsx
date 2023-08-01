@@ -13,12 +13,20 @@ import { Premium, Vip } from '../../pages/api/svg';
 import { Tooltip } from 'antd';
 import PremiumIcon from "../icons/PremiumIcon";
 import VipIcon from "../icons/VipIcon";
-
+import useDarkMode from '../../hooks/useDarkMode';
+import { ModeClasses } from "../../interfaces/Mode";
 
 const Card: React.FC<Card> = ({ title, created_at, img, additionals, slug, is_vip, is_premium }) => {
 
     const router: NextRouter = useRouter();
     const time = new Time(router.locale || "az");
+
+    const { mode } = useDarkMode();
+
+    const modeClasses = useMemo<ModeClasses>(() => { return {
+        'light': null,
+        'dark': styles.darkMode
+    }}, [])
 
     const listDisc = useMemo<String>(() => {
         return {
@@ -28,7 +36,7 @@ const Card: React.FC<Card> = ({ title, created_at, img, additionals, slug, is_vi
     }, [])
 
     return (
-        <div className={`${styles.card} overflow-hidden rounded-md`}>
+        <div className={`${styles.card} ${modeClasses[mode]} overflow-hidden rounded-md`}>
 
             <Link href={`/${process.env.NEXT_PUBLIC_DETAIL_PAGE}/${slug}`} passHref>
 
