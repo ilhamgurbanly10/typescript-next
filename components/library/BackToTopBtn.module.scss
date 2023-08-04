@@ -1,0 +1,23 @@
+@import './Variables.module.scss';
+@import './Extends.module.scss';
+
+.btn {
+    position: fixed;
+    background-color: $lightGrey;
+    width: 50px;
+    height: 50px;
+    @extend .center;
+    border-radius: 5px;
+    right: 2rem;
+    bottom: -100px;
+    z-index: $maxLayer;
+    transition: all $time;
+}
+
+.btn.show {
+    bottom: 2rem
+}
+
+.btn svg {
+    fill: $black;
+}

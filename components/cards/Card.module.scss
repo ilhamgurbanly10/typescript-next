@@ -40,13 +40,16 @@
 
 // dark-mode
 
-.darkMode .box {
-    background-color: $darkGrey;
-}
+.darkMode {
 
-.darkMode .title,
-.darkMode .time,
-.darkMode .additionals {
-    color: $white;
-}
+    .box {
+        background-color: $darkGrey;
+    }
 
+    .title,
+    .time,
+    .additionals {
+        color: $white;
+    }
+
+}

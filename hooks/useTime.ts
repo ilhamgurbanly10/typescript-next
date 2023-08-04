@@ -1,14 +1,17 @@
-class Time {
+import { useCallback } from 'react';
 
-    lang: string;
+export interface TimeHook {
+  elapsedTime: (date: string, locale: any) => string;
+  getYear: () => number;
+}
 
-    constructor(lang: string) {
-        this.lang = lang;
-    }
-    
-    elapsedTime(date: string) {
-        
-        const time: string = date.split('.')[0];
+const useTime = (): TimeHook => {
+
+  const getYear = (): number => new Date().getFullYear();
+
+  const elapsedTime = useCallback((date: string, locale: any) => {
+   
+    const time: string = date.split('.')[0];
         const now: Date = new Date();
         const old: Date = new Date(time);
         const milliseconds:number = now.getTime() - old.getTime();
@@ -59,12 +62,14 @@ class Time {
             }
         }
 
-        elapse[this.lang]();
+        elapse[locale]();
     
         return text;
 
-    }
-    
-}
+  }, []); 
 
-export default Time;
+  return { elapsedTime, getYear };
+
+};
+
+export default useTime;

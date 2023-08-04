@@ -11,6 +11,16 @@ export const getLastPosts = async (): Promise<Post[]> => {
   }
 };
 
+export const getVipPosts = async (): Promise<Post[]> => {
+  try {
+    const response = await api.get('vip_announcements_slider');
+    return response?.data;
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return [];
+  }
+};
+
 export const getPostsPerCategory = async (): Promise<PostsPerCategory[]> => {
   try {
     const response = await api.get('category-products-all');

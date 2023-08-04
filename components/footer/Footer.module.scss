@@ -1,3 +1,129 @@
+@import '../../styles/scss/colors.scss';
+@import '../../styles/scss/variables.scss';
+
 .footer {
+    margin-top: 100px;
+}
+
+.top {
+    background-color: $lightBlue;
+    padding: 1rem;
+}
+
+.bottom {
+    background-color: $darkBlue;
+    padding: 1rem;
+}
+
+.leftText,
+.rightText {
+    color: $white;
+    font-size: 14px;
+}
+
+.borderTop {
+    border-top: 1px solid $opacitiedWhite;
+}
+
+.listBox {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-gap: 20px;
+    justify-items: center;
+}
+
+.listBoxDesktop {
+    display: none !important;
+}
+
+.listTitle {
+    color: $white;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    font-size: 20px;
+    align-items: center;
+}
+
+.item {
+    text-align: center;
+}
+
+.item:not(.last-child) {
+    margin-bottom: 1rem;
+}
+
+.socials {
+    color: $white;
+}
+
+.socials svg {
+    fill: $white;
+}
+
+.phoneBox {
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center !important;
+}
+
+.phone {
+    color: $white;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.phone:not(:first-child) {
+    margin-left: 1rem;
+    position: relative;
+}
+
+.phone:not(:first-child)::before {
+    position: absolute;
+    content: ';';
+    left: -.6rem;
+}
+
+@media (min-width: 992px) {
+
+    .leftText,
+    .rightText {
+       width: 30%;
+    }
+
+    .listBox {
+        grid-template-columns: repeat(5, 1fr);
+        justify-items: start;
+    }
+
+    .listBoxDesktop {
+        display: grid !important;
+    }
+
+    .listBoxMobile {
+        display: none !important;
+    }
+
+    .item {
+        text-align: left;
+    }
+
+    .phoneBox {
+        width: initial;
+        margin-top: 0;
+    }
+
+}
+
+// dark-mode
+
+.darkMode {
+
+    .top {
+        background-color: $darkGrey2;
+    }
     
+    .bottom {
+        background-color: $darkGrey;
+    }
+
 }

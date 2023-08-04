@@ -5,7 +5,6 @@ import Link from "next/link";
 import { String } from '../../interfaces/Conditions'
 // import dynamic from 'next/dynamic'
 // const GreenButton = dynamic(() => import('../styled-components/buttons/GreenButton'), { ssr: false })
-import Time from '../../pages/api/classes/Time';
 import { NextRouter, useRouter } from 'next/router'
 import NextImage from "../images/NextImage";
 import WishlistButton from "../buttons/WishlistButton";
@@ -15,11 +14,13 @@ import PremiumIcon from "../icons/PremiumIcon";
 import VipIcon from "../icons/VipIcon";
 import useDarkMode from '../../hooks/useDarkMode';
 import { ModeClasses } from "../../interfaces/Mode";
+import useTime from '../../hooks/useTime';
 
 const Card: React.FC<Card> = ({ title, created_at, img, additionals, slug, is_vip, is_premium }) => {
 
     const router: NextRouter = useRouter();
-    const time = new Time(router.locale || "az");
+
+    const { elapsedTime } = useTime();
 
     const { mode } = useDarkMode();
 
@@ -28,12 +29,10 @@ const Card: React.FC<Card> = ({ title, created_at, img, additionals, slug, is_vi
         'dark': styles.darkMode
     }}, [])
 
-    const listDisc = useMemo<String>(() => {
-        return {
-            'true': " • ",
-            'false': ""
-        }
-    }, [])
+    const listDisc = useMemo<String>(() => { return {
+        'true': " • ",
+        'false': ""
+    }}, [])
 
     return (
         <div className={`${styles.card} ${modeClasses[mode]} overflow-hidden rounded-md`}>
@@ -77,7 +76,7 @@ const Card: React.FC<Card> = ({ title, created_at, img, additionals, slug, is_vi
                             </div>
                         </div>
 
-                        <p className={`${styles.time} mt-2 text-xs`}>{time.elapsedTime(created_at)}</p>
+                        <p className={`${styles.time} mt-2 text-xs`}>{ elapsedTime(created_at, router?.locale)}</p>
 
                     </div>
 

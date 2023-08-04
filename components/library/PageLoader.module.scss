@@ -1,0 +1,10 @@
+@import './Variables.module.scss';
+@import './Extends.module.scss';
+
+.container {
+    position: fixed;
+    inset: 0;
+    background-color: $white;
+    @extend .center;
+    z-index: $maxLayer;
+}

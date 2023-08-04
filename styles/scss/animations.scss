@@ -25,3 +25,20 @@
     width: 100%;
     animation: runningAnimation 10s linear infinite;
 }
+
+// -btn-rotate-
+.btn-rotate {
+    transition: all $timeSm;
+}
+
+@media (hover: hover) {
+    .btn-rotate:hover {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.btn-rotate:active {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+}

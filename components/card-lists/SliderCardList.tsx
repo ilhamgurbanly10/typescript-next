@@ -10,7 +10,7 @@ import CardListLoader from '../card-list-loaders/CardListLoader';
 const CardList: React.FC<SliderCardList> = ({data, title = "", link = "", className = "", loading = false }) => {
 
     return (
-        <section className={`${styles.cardList} ${className} slider-card-list`}>
+        <section className={`${styles.cardList} ${className} slider-card-list ${data?.length == 1 ? 'hide-slick-bug' : ''}`}>
 
             <CardListHead title={title} link={link} arrows={true} />
             

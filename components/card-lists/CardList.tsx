@@ -33,7 +33,7 @@ const CardList: React.FC<CardList> = ({data, title = "", link = "", className = 
                 </div>
             }
 
-            {data?.length && !loading && <NoPosts/>}
+            {!data?.length && !loading && <NoPosts/>}
 
         </section>
     )

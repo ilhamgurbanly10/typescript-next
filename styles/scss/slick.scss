@@ -15,3 +15,12 @@
 .hidden-arrows .slick-arrow {
     display: none !important;
 }
+
+// hide-bugs
+@media (max-width: 991.98px) {
+
+    .hide-slick-bug .slick-track .slick-slide:last-child {
+        display: none !important;
+    }
+
+}

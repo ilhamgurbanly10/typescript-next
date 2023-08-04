@@ -1,10 +1,5 @@
-import React, {useEffect, useMemo} from "react";
+import React, {useEffect, useMemo, memo} from "react";
 import styles from './Header.module.scss'
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { socialsState } from '../../state/atoms';
-import { socialsSelector } from '../../state/selectors';
-import {getSocials} from '../../utils/getCommonDatas' 
-import {Socials} from '../../interfaces/CommonDatas'
 import ModeToggler from "../buttons/ModeToggler";
 import useDarkMode from '../../hooks/useDarkMode';
 import useLocale from '../../hooks/useLocale';
@@ -15,7 +10,9 @@ import HamburgerMenu from "../menus/HamburgerMenu";
 import { NextRouter, useRouter } from 'next/router'
 import Filter from "../filters/Filter";
 import Select, {SelectData} from "../library/Select";
-
+import useRecoilDatas from "../../hooks/useRecoilDatas";
+import PageLoader from '../library/PageLoader';
+import BackToTopBtn from '../library/BackToTopBtn';
 
 const Header: React.FC<any> = () => {
 
@@ -23,10 +20,7 @@ const Header: React.FC<any> = () => {
 
     const { locales, locale, changeLocale, defaultLocale } = useLocale();
 
-    // recoil-common-datas
-    const recoilGetSocials = async (): Promise<void> => setSocials(await getSocials());
-    const [socials, setSocials] = useRecoilState<Socials[]>(socialsState);
-    const socialsData = useRecoilValue<Socials[]>(socialsSelector);
+    const { recoilGetSocials, recoilGetCities, socialsData } = useRecoilDatas();
 
     const { mode } = useDarkMode();
 
@@ -37,6 +31,7 @@ const Header: React.FC<any> = () => {
 
     useEffect(() => {
         recoilGetSocials();
+        recoilGetCities();
     }, [])
 
     return (
@@ -50,35 +45,10 @@ const Header: React.FC<any> = () => {
                         <h1 className={`${styles.logo} font-bold text-lg btn-grow-on-hover`}>EMLAK.AZ</h1>
                     </Link>
 
-                    <div className={`ms-auto me-4`}>
-
-                        <Select 
-                            data={locales}
-                            onChange={(e) => { console.log(e); changeLocale(e?.value); }}
-                            placeholder={locale?.toUpperCase()}
-                            fullWidth={true}
-                            defaultValue={locale}
-                            allowSearch={false}
-                        />
-
-                        {/* <Select 
-                            data={locales}
-                            onChange={(e) => { console.log(e); changeLocale(e?.value); }}
-                            placeholder="Şəhər seçin"
-                            fullWidth={false}
-                            defaultValue={defaultLocale}
-                            className="select-style"
-                            allowClear={true}
-                            searchPlaceholder="Şəhər axtarın"
-                            notFoundedText="Axtarışınıza uyğun şəhər tapılmadı"
-                        /> */}
-
-                    </div>
-
-                    <div className="hidden lg:flex lg:items-center">
+                    <div className="hidden lg:flex lg:items-center ms-auto">
 
                         <div className="flex items-center">
-                            {socialsData?.length > 0 && socialsData[0].phone?.map((d, i) => (
+                            {socialsData?.phone?.map((d, i) => (
                                 <a key={i} className={styles.phone} href={`tel:${d?.number}`}>{d?.number}</a>
                             ))}
                         </div>
@@ -94,6 +64,19 @@ const Header: React.FC<any> = () => {
                                 <UserOutlined/> <span>Giriş</span>
                             </span>
                         </Link>
+
+                    </div>
+
+                    <div className={`ms-auto lg:ms-4 me-4 lg:me-0`}>
+
+                        <Select 
+                            data={locales}
+                            onChange={(e) => { console.log(e); changeLocale(e?.value); }}
+                            placeholder={locale?.toUpperCase()}
+                            fullWidth={true}
+                            defaultValue={locale}
+                            allowSearch={false}
+                        />
 
                     </div>
 
@@ -146,8 +129,12 @@ const Header: React.FC<any> = () => {
 
             <Filter/>
 
+            <PageLoader />
+
+            <BackToTopBtn />        
+
         </header>
     )
 }
 
-export default Header;
+export default memo(Header);

@@ -10,7 +10,7 @@ const { parsed: buildEnv } = require('dotenv').config({
 });
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   future: {
     webpack5: true,

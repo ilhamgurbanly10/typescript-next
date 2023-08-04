@@ -7,14 +7,14 @@ interface Locale {
   disabled: boolean;
 }
 
-export interface DarkModeHook {
+export interface LocaleHook {
   changeLocale: (selectedLocale: string) => void;
   locale: any;
   locales: Locale[];
   defaultLocale: string;
 }
 
-const useLocale = (): DarkModeHook => {
+const useLocale = (): LocaleHook => {
 
   const router = useRouter();
   const locale = router?.locale;

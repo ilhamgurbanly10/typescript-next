@@ -2,6 +2,11 @@ body {
     background-color: $lightGrey;
 }
 
+html, 
+body {
+    scroll-behavior: smooth;
+}
+
 body.dark-mode {
     background-color: $black;
 }
