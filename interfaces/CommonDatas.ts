@@ -37,4 +37,10 @@ export interface Regions {
     target: Target[];
     village: any;
 }
+
+export interface Loader {
+    state: boolean,
+    loop: number,
+    percent: number
+}
   

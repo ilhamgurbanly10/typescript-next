@@ -1,9 +1,13 @@
 import { atom } from 'recoil';
-import {Socials, Cities} from '../interfaces/CommonDatas'
+import {Socials, Cities, Loader} from '../interfaces/CommonDatas'
 
-export const pageLoaderState = atom<boolean>({
+export const pageLoaderState = atom<Loader>({
   key: 'pageLoaderState',
-  default: true,
+  default: {
+    state: true,
+    loop: 0,
+    percent: 0
+  },
 });
 
 export const socialsState = atom<Socials[]>({

@@ -5,7 +5,7 @@ import {Socials, Cities, Regions} from '../interfaces/CommonDatas'
 export const pageLoaderSelector = selector({
   key: 'pageLoaderSelector',
   get: ({ get }) => {
-    return get<boolean>(pageLoaderState);
+    return get<{state: boolean, loop: number}>(pageLoaderState);
   },
 });
 

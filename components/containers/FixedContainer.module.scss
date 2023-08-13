@@ -1,0 +1,18 @@
+@import '../../styles/scss/colors.scss';
+@import '../../styles/scss/variables.scss';
+
+.container {
+    background-color: $white;
+    z-index: $maxLayer;
+    transition: all $timeSm;
+
+    &.hide {
+        display: none !important;
+    }
+}
+
+// dark-mode
+
+.darkMode {
+
+}

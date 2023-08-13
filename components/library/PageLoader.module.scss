@@ -6,5 +6,25 @@
     inset: 0;
     background-color: $white;
     @extend .center;
+    flex-direction: column;
     z-index: $maxLayer;
+}
+
+.percent {
+    margin-top: 1rem;
+    display: block;
+    text-align: center;
+}
+
+.progress {
+    margin-top: 1rem;
+    width: 150px;
+    height: 10px;
+    background-color: $lightGrey2;
+}
+
+.progressLine {
+    height: 10px;
+    background-color: $darkBlue;
+    width: 100%;
 }

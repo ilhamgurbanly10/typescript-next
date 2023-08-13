@@ -20,9 +20,13 @@ const PageLoader: React.FC = () => {
 
     return (
         <>
-            {pageLoader &&
+            {pageLoader.state &&
                 <div className={styles.container}>
                     <Spin indicator={antIcon} className="text-center" spinning={true} />
+                    <div className={styles.progress}>
+                        <div className={styles.progressLine} style={{width: `${pageLoader.percent}%`}}></div>
+                    </div>
+                    <p className={styles.percent}>{pageLoader.percent} %</p>
                 </div>
             }
         </>
@@ -30,4 +34,4 @@ const PageLoader: React.FC = () => {
 
 }
 
-export default memo(PageLoader);
+export default PageLoader;

@@ -1,0 +1,62 @@
+@import './variables.scss';
+
+.form {
+    display: flex;
+    flex-direction: column;
+
+    &.error {
+       
+    }
+}
+
+.group {
+    margin-top: 1rem;
+}
+
+.label {
+    display: block;
+    margin-bottom: .5rem;
+    cursor: pointer;
+
+    .required {
+        display: inline-block;
+        margin-right: .3rem;
+
+        &::before {
+            display: inline-block;
+            color: $red;
+            font-size: 14px;
+            font-family: SimSun,sans-serif;
+            line-height: 1;
+            content: "*";
+        }
+    }
+    
+}
+
+.input {
+    width: 100%;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 5px;
+    outline: 0 !important;
+
+    &.error {
+        border-color: $red;
+    }
+}
+
+.errorMes {
+    color: $red;
+    margin-top: .5rem;
+    white-space: normal;
+}
+
+.submit {
+
+    &.disabled {
+        background-color: grey;
+        cursor: not-allowed;
+    }
+
+}

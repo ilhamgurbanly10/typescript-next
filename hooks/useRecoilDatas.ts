@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState, useEffect } from 'react';
 import {useRouter } from 'next/router';
 import {getSocials, getCitites} from '../utils/getCommonDatas' 
-import {Socials, Cities, Regions} from '../interfaces/CommonDatas'
+import {Socials, Cities, Regions, Loader} from '../interfaces/CommonDatas'
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { socialsState, citiesState, pageLoaderState } from '../state/atoms';
 import { socialsSelector, citiesSelector, regionsSelector, pageLoaderSelector } from '../state/selectors';
@@ -23,10 +23,12 @@ export interface LocaleHook {
   cityMobileData: Cities[][];
   regionDesktopData: Regions[][];
   regionMobileData: Regions[][];
-  pageLoader: boolean;
+  pageLoader: Loader;
 }
 
 const useRecoilDatas = (): LocaleHook => {
+  
+  const apisLength = Number(process.env.NEXT_PUBLIC_APIS_LENGTH);
   
   // hooks
   const {divideArrayIntoChunks} = useRecursion();
@@ -36,9 +38,9 @@ const useRecoilDatas = (): LocaleHook => {
   const [cityMobileData, setCityMobileData] = useState<Cities[][]>([]);
   const [regionDesktopData, setRegionDesktopData] = useState<Regions[][]>([]);
   const [regionMobileData, setRegionMobileData] = useState<Regions[][]>([]);
-  const [pageLoaderState, setPageLoaderState] = useState<boolean>(true);
 
   // atoms
+  const [pageLoader, setPageLoader] = useRecoilState<Loader>(pageLoaderState);
   const [socials, setSocials] = useRecoilState<Socials[]>(socialsState);
   const [cities, setCities] = useRecoilState<Cities[]>(citiesState);
 
@@ -48,18 +50,28 @@ const useRecoilDatas = (): LocaleHook => {
   const regionData = useRecoilValue<Regions[]>(regionsSelector);
 
   // functions
-  const recoilGetSocials = async (): Promise<void> => { setSocials(await getSocials()); }
-  const recoilGetCities = async (): Promise<void> => setCities(await getCitites());
+  const recoilGetSocials = async (): Promise<void> => { 
+    setSocials(await getSocials()); 
+    setPageLoader(prevPageLoader => ({ ...prevPageLoader, loop: prevPageLoader.loop + 1, percent: Math.floor(prevPageLoader.percent + (100 / apisLength)) }))
+  }
+  
+  const recoilGetCities = async (): Promise<void> => { 
+    setCities(await getCitites());
+    setPageLoader(prevPageLoader => ({ ...prevPageLoader, loop: prevPageLoader.loop + 1, percent: Math.floor(prevPageLoader.percent + (100 / apisLength)) }))
+  }
 
   useEffect(() => {
     setCityDesktopData(divideArrayIntoChunks(cities, 20));
     setCityMobileData(divideArrayIntoChunks(cities, 50));
     setRegionDesktopData(divideArrayIntoChunks(regionData, 3));
     setRegionMobileData(divideArrayIntoChunks(regionData, 8));
-    setTimeout(() => { setPageLoaderState(false); }, 1000)
   }, [cityData])
+
+  useEffect(() => {
+    if (pageLoader.loop == apisLength) { setTimeout(() => { setPageLoader({...pageLoader, state: false }); }, 200) }
+  }, [pageLoader.loop]);
   
-  return { recoilGetSocials, recoilGetCities, socialsData, cityData, regionData, cityDesktopData, cityMobileData, regionDesktopData, regionMobileData, pageLoader: pageLoaderState };
+  return { recoilGetSocials, recoilGetCities, socialsData, cityData, regionData, cityDesktopData, cityMobileData, regionDesktopData, regionMobileData, pageLoader };
 
 };
 

@@ -30,7 +30,7 @@ const NextImage: React.FC<NextImage> = ({alt = "", src = "/", quality = 75, size
                     layout="fill"
                     quality={quality}
                     sizes={sizes}
-                    loading="eager"
+                    loading="lazy"
                     onLoadingComplete={() => { setImgLoading(false); }}
                     onError={() => { setImgLoading(false); setImgError(true); }}
                 />

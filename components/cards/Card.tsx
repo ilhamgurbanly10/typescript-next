@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from "react"
+import React, { memo, useMemo, useState, useEffect } from "react"
 import styles from './Card.module.scss'
 import { Card } from '../../interfaces/Cards'
 import Link from "next/link";
@@ -24,6 +24,8 @@ const Card: React.FC<Card> = ({ title, created_at, img, additionals, slug, is_vi
 
     const { mode } = useDarkMode();
 
+    const [isClient, setIsClient] = useState<boolean>(false);
+
     const modeClasses = useMemo<ModeClasses>(() => { return {
         'light': null,
         'dark': styles.darkMode
@@ -33,6 +35,10 @@ const Card: React.FC<Card> = ({ title, created_at, img, additionals, slug, is_vi
         'true': " • ",
         'false': ""
     }}, [])
+
+    useEffect(() => {
+        setIsClient(true);
+    }, [])
 
     return (
         <div className={`${styles.card} ${modeClasses[mode]} overflow-hidden rounded-md`}>
@@ -66,6 +72,7 @@ const Card: React.FC<Card> = ({ title, created_at, img, additionals, slug, is_vi
 
                         <h2 className={`${styles.title} whitespace-nowrap overflow-hidden truncate`}>{title}</h2>
 
+                        
                         <div className="mt-2 text-sm overflow-hidden">
                             <div className={`${styles.additionals} text-running`}>
                                 {additionals?.map((add, i) => (
@@ -76,7 +83,7 @@ const Card: React.FC<Card> = ({ title, created_at, img, additionals, slug, is_vi
                             </div>
                         </div>
 
-                        <p className={`${styles.time} mt-2 text-xs`}>{ elapsedTime(created_at, router?.locale)}</p>
+                        {isClient && <p className={`${styles.time} mt-2 text-xs`}>{ elapsedTime(created_at, router?.locale)}</p>}
 
                     </div>
 

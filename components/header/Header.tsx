@@ -13,6 +13,7 @@ import Select, {SelectData} from "../library/Select";
 import useRecoilDatas from "../../hooks/useRecoilDatas";
 import PageLoader from '../library/PageLoader';
 import BackToTopBtn from '../library/BackToTopBtn';
+import FixedContainer from '../containers/FixedContainer';
 
 const Header: React.FC<any> = () => {
 
@@ -131,7 +132,9 @@ const Header: React.FC<any> = () => {
 
             <PageLoader />
 
-            <BackToTopBtn />        
+            <BackToTopBtn />   
+            
+            <FixedContainer />     
 
         </header>
     )
